@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lá Đu Đủ Học Tập — Tính điểm rèn luyện, Video học, Đăng bài & Chat</title>
+<meta name="description" content="Web học tập hỗ trợ sinh viên: tính điểm rèn luyện, xem video bài giảng không quảng cáo, đăng bài chia sẻ và chat cùng bạn học." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍃</text></svg>" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/learning.css" />
+</head>
+<body>
+
+<!-- ===== PRELOADER ===== -->
+<div id="preloader" aria-hidden="true">
+  <div class="loader-leaf">🍃</div>
+  <div class="loader-text">LÁ ĐU ĐỦ HỌC TẬP</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<!-- ===== HIỆU ỨNG ===== -->
+<div id="scroll-progress"></div>
+<canvas id="leaves-canvas" aria-hidden="true"></canvas>
+<div id="toast" role="status"></div>
+
+<!-- ===== NAVBAR ===== -->
+<header id="navbar">
+  <a href="#trang-chu" class="logo">
+    <span class="logo-icon">🍃</span>
+    <span class="logo-text">LÁ ĐU ĐỦ<small>HỌC TẬP</small></span>
+  </a>
+  <nav id="nav-links">
+    <a href="#trang-chu" class="nav-link active">Trang chủ</a>
+    <a href="#diem-ren-luyen" class="nav-link">Điểm rèn luyện</a>
+    <a href="#video" class="nav-link">Video học</a>
+    <a href="#bai-viet" class="nav-link">Đăng bài</a>
+    <a href="#chat" class="nav-link">Chat</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+  </nav>
+  <div class="nav-actions">
+    <div class="online-pill"><span class="dot"></span><span id="online-count">248</span> đang học</div>
+    <a href="#diem-ren-luyen" class="btn btn-primary btn-sm magnetic">📊 Tính điểm ngay</a>
+    <button id="menu-btn" aria-label="Mở menu">☰</button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="trang-chu" class="hero">
+  <div class="hero-bg" data-parallax="12"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge reveal">🎓 Web học tập hỗ trợ sinh viên</div>
+    <h1 class="hero-title reveal" data-delay="100">
+      <span class="line">HỌC TẬP • RÈN LUYỆN</span>
+      <span class="line gradient-text">CHIA SẺ • KẾT NỐI</span>
+    </h1>
+    <p class="hero-desc reveal" data-delay="200">
+      Nền tảng học tập <strong>Lá Đu Đủ</strong> — tính <strong>điểm rèn luyện</strong> nhanh chóng,
+      xem <strong>video bài giảng không quảng cáo</strong>, <strong>đăng bài chia sẻ</strong> kiến thức
+      và <strong>chat</strong> cùng bạn học mọi lúc, mọi nơi.
+    </p>
+
+    <div class="hero-cta reveal" data-delay="300">
+      <a href="#diem-ren-luyen" class="btn btn-primary btn-lg magnetic">📊 Tính điểm rèn luyện</a>
+      <a href="#video" class="btn btn-ghost btn-lg magnetic">▶️ Xem video học</a>
+    </div>
+
+    <div class="hero-stats reveal" data-delay="400">
+      <div class="hstat"><strong><span class="counter" data-target="5200">0</span>+</strong><span>Học viên</span></div>
+      <div class="hstat"><strong><span class="counter" data-target="350">0</span>+</strong><span>Video bài giảng</span></div>
+      <div class="hstat"><strong><span class="counter" data-target="1200">0</span>+</strong><span>Bài viết chia sẻ</span></div>
+      <div class="hstat"><strong><span class="counter" data-target="98">0</span>%</strong><span>Hài lòng</span></div>
+    </div>
+  </div>
+
+  <div class="hero-cards" aria-hidden="true">
+    <div class="float-card fc1" data-parallax="30">📊 Điểm rèn luyện<br /><small>Tính trong 1 phút</small></div>
+    <div class="float-card fc2" data-parallax="-25">▶️ Video không quảng cáo<br /><small>Học tập trung</small></div>
+    <div class="float-card fc3" data-parallax="20">💬 Chat bạn học<br /><small>Hỏi & đáp nhanh</small></div>
+  </div>
+
+  <a href="#diem-ren-luyen" class="scroll-hint" aria-label="Cuộn xuống">⌄</a>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>📊 ĐIỂM RÈN LUYỆN</span><span>▶️ VIDEO KHÔNG QUẢNG CÁO</span><span>✍️ ĐĂNG BÀI CHIA SẺ</span><span>💬 CHAT BẠN HỌC</span><span>📚 HỌC LIỆU MIỄN PHÍ</span><span>🎓 HỖ TRỢ SINH VIÊN</span>
+    <span>📊 ĐIỂM RÈN LUYỆN</span><span>▶️ VIDEO KHÔNG QUẢNG CÁO</span><span>✍️ ĐĂNG BÀI CHIA SẺ</span><span>💬 CHAT BẠN HỌC</span><span>📚 HỌC LIỆU MIỄN PHÍ</span><span>🎓 HỖ TRỢ SINH VIÊN</span>
+  </div>
+</div>
+
+<!-- ===== 1. ĐIỂM RÈN LUYỆN ===== -->
+<section id="diem-ren-luyen" class="section">
+  <div class="container">
+    <span class="section-tag reveal">📊 Tính điểm rèn luyện</span>
+    <h2 class="section-title reveal" data-delay="100">Tính <span class="gradient-text">điểm rèn luyện</span> trong 1 phút</h2>
+    <p class="section-desc reveal" data-delay="200">
+      Thang điểm 100 theo quy định Bộ GD&ĐT: Học tập (20) • Chấp hành nội quy (25) •
+      Hoạt động xã hội (20) • Công dân cộng đồng (20) • Văn hóa, thể thao (15).
+      Kéo thanh trượt theo thực tế của bạn — điểm sẽ tự tính!
+    </p>
+
+    <div class="rl-grid">
+      <!-- Form -->
+      <div class="rl-form card reveal">
+        <div class="rl-inputs">
+          <label>Họ tên sinh viên
+            <input type="text" id="rl-name" placeholder="VD: Nguyễn Văn A" />
+          </label>
+          <label>Học kỳ
+            <select id="rl-semester">
+              <option>Học kỳ 1</option><option>Học kỳ 2</option>
+              <option>Học kỳ 3</option><option>Học kỳ 4</option>
+              <option>Học kỳ 5</option><option>Học kỳ 6</option>
+              <option>Học kỳ 7</option><option>Học kỳ 8</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="rl-categories"><!-- JS tạo các mục --></div>
+
+        <div class="rl-actions">
+          <button class="btn btn-primary magnetic" id="rl-save">💾 Lưu kết quả</button>
+          <button class="btn btn-ghost magnetic" id="rl-sample">✨ Điền mẫu</button>
+          <button class="btn btn-ghost magnetic" id="rl-reset">↺ Đặt lại</button>
+        </div>
+      </div>
+
+      <!-- Kết quả -->
+      <div class="rl-result card reveal" data-delay="150">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 200 200">
+            <circle class="ring-bg" cx="100" cy="100" r="86" />
+            <circle class="ring-fg" id="ring-fg" cx="100" cy="100" r="86" />
+          </svg>
+          <div class="ring-center">
+            <strong id="rl-total">0</strong>
+            <span>/ 100 điểm</span>
+          </div>
+        </div>
+        <div class="rl-rating" id="rl-rating">Chưa xếp loại</div>
+        <p class="rl-hint" id="rl-hint">Hãy kéo các thanh trượt để tính điểm của bạn.</p>
+
+        <div class="rl-scale">
+          <span>Yếu &lt;50</span><span>TB 50–64</span><span>Khá 65–79</span><span>Tốt 80–89</span><span>XS 90+</span>
+        </div>
+
+        <h4>🕘 Lịch sử của bạn</h4>
+        <div id="rl-history" class="rl-history"><p class="muted">Chưa có kết quả nào được lưu.</p></div>
+        <button class="btn btn-ghost btn-sm magnetic" id="rl-clear-history">🗑️ Xóa lịch sử</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. VIDEO HỌC ===== -->
+<section id="video" class="section section-alt">
+  <div class="container">
+    <span class="section-tag reveal">▶️ Video học tập</span>
+    <h2 class="section-title reveal" data-delay="100">Xem video bài giảng <span class="gradient-text">không quảng cáo</span></h2>
+    <p class="section-desc reveal" data-delay="200">
+      Tuyển chọn video bài giảng chất lượng theo môn học. Video được nhúng từ YouTube
+      (chế độ không cookie) — trang không chèn quảng cáo, bạn học tập trung không gián đoạn.
+    </p>
+
+    <div class="video-filters reveal" data-delay="250" id="video-filters">
+      <button class="vfilter active" data-cat="all">Tất cả</button>
+      <button class="vfilter" data-cat="toan">📐 Toán</button>
+      <button class="vfilter" data-cat="van">📖 Văn</button>
+      <button class="vfilter" data-cat="ly">⚛️ Vật lý</button>
+      <button class="vfilter" data-cat="tin">💻 Tin học</button>
+      <button class="vfilter" data-cat="anh">🗣️ Tiếng Anh</button>
+      <button class="vfilter" data-cat="kynang">🌱 Kỹ năng sống</button>
+    </div>
+
+    <div class="video-grid reveal" data-delay="300" id="video-grid"><!-- JS tạo --></div>
+    <p class="note reveal">💡 Mẹo: bấm vào video để xem ngay trong trang, không cần rời khỏi web.</p>
+  </div>
+</section>
+
+<!-- ===== 3. ĐĂNG BÀI ===== -->
+<section id="bai-viet" class="section">
+  <div class="container">
+    <span class="section-tag reveal">✍️ Diễn đàn học tập</span>
+    <h2 class="section-title reveal" data-delay="100">Đăng bài <span class="gradient-text">chia sẻ kiến thức</span></h2>
+    <p class="section-desc reveal" data-delay="200">
+      Hỏi bài, chia sẻ tài liệu, kinh nghiệm ôn thi hay mẹo học tập — bài viết của bạn
+      sẽ được lưu lại và hiển thị cho mọi người cùng đọc.
+    </p>
+
+    <div class="posts-layout">
+      <!-- Form đăng bài -->
+      <form class="post-form card reveal" id="post-form">
+        <h3>✍️ Viết bài mới</h3>
+        <label>Tên hiển thị
+          <input type="text" id="post-name" placeholder="Tên của bạn" maxlength="40" required />
+        </label>
+        <label>Chuyên mục
+          <select id="post-cat">
+            <option value="Hỏi bài">❓ Hỏi bài</option>
+            <option value="Tài liệu">📚 Tài liệu</option>
+            <option value="Kinh nghiệm">💡 Kinh nghiệm</option>
+            <option value="Ôn thi">🎯 Ôn thi</option>
+            <option value="Chia sẻ">💬 Chia sẻ</option>
+          </select>
+        </label>
+        <label>Tiêu đề
+          <input type="text" id="post-title" placeholder="Tiêu đề bài viết..." maxlength="90" required />
+        </label>
+        <label>Nội dung
+          <textarea id="post-body" rows="5" placeholder="Viết nội dung chia sẻ của bạn..." maxlength="1200" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary magnetic">🚀 Đăng bài</button>
+        <p class="muted small">Bài viết được lưu trên trình duyệt của bạn.</p>
+      </form>
+
+      <!-- Danh sách bài -->
+      <div class="posts-main reveal" data-delay="150">
+        <div class="posts-toolbar">
+          <input type="search" id="post-search" placeholder="🔍 Tìm bài viết..." />
+          <select id="post-filter">
+            <option value="all">Tất cả chuyên mục</option>
+            <option value="Hỏi bài">❓ Hỏi bài</option>
+            <option value="Tài liệu">📚 Tài liệu</option>
+            <option value="Kinh nghiệm">💡 Kinh nghiệm</option>
+            <option value="Ôn thi">🎯 Ôn thi</option>
+            <option value="Chia sẻ">💬 Chia sẻ</option>
+          </select>
+        </div>
+        <div id="posts-list" class="posts-list"><!-- JS tạo --></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. CHAT ===== -->
+<section id="chat" class="section section-alt">
+  <div class="container">
+    <span class="section-tag reveal">💬 Chat bạn học</span>
+    <h2 class="section-title reveal" data-delay="100">Trò chuyện, <span class="gradient-text">hỏi đáp nhanh</span></h2>
+    <p class="section-desc reveal" data-delay="200">
+      Phòng chat cộng đồng để trao đổi bài vở, rủ học nhóm và hỗ trợ lẫn nhau.
+      <em>(Bản demo: tin nhắn lưu trên trình duyệt, có bạn học ảo trả lời để bạn trải nghiệm.)</em>
+    </p>
+
+    <div class="chat-layout reveal" data-delay="250">
+      <!-- Danh sách online -->
+      <aside class="chat-users card">
+        <h4>🟢 Đang online (<span id="chat-online-n">8</span>)</h4>
+        <ul id="chat-users"></ul>
+      </aside>
+
+      <!-- Khung chat -->
+      <div class="chat-box card">
+        <div class="chat-head">
+          <span>💬 Phòng chat chung</span>
+          <button class="btn btn-ghost btn-sm" id="chat-clear">🗑️ Xóa chat</button>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-typing" id="chat-typing" hidden><span></span> đang gõ...</div>
+        <div class="chat-emojis">
+          <button>😀</button><button>😂</button><button>👍</button><button>❤️</button><button>🎉</button><button>📚</button><button>🔥</button>
+        </div>
+        <form class="chat-input" id="chat-form">
+          <input type="text" id="chat-text" placeholder="Nhắn tin... (Enter để gửi)" maxlength="300" autocomplete="off" />
+          <button type="submit" class="btn btn-primary magnetic">Gửi ➤</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="section">
+  <div class="container narrow">
+    <span class="section-tag reveal">❓ Câu hỏi thường gặp</span>
+    <h2 class="section-title reveal" data-delay="100">Bạn thắc mắc? <span class="gradient-text">Có ngay đáp án</span></h2>
+
+    <div class="faq-list reveal" data-delay="200">
+      <div class="faq-item">
+        <button class="faq-q">Điểm rèn luyện được tính như thế nào? <span>+</span></button>
+        <div class="faq-a"><p>Theo thang 100 điểm gồm 5 tiêu chí: Học tập (20), Chấp hành nội quy & pháp luật (25), Hoạt động xã hội (20), Công dân trong cộng đồng (20), Văn hóa & thể thao (15). Xếp loại: 90–100 Xuất sắc, 80–89 Tốt, 65–79 Khá, 50–64 Trung bình, dưới 50 Yếu.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Xem video có quảng cáo không? <span>+</span></button>
+        <div class="faq-a"><p>Trang không chèn quảng cáo. Video được nhúng từ YouTube ở chế độ không cookie (<em>youtube-nocookie</em>) để hạn chế tối đa quảng cáo và theo dõi. Bạn xem ngay trong trang, không cần rời khỏi web.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Đăng bài có cần đăng ký tài khoản không? <span>+</span></button>
+        <div class="faq-a"><p>Không cần! Chỉ cần nhập tên hiển thị, viết tiêu đề và nội dung rồi bấm Đăng bài. Bài viết được lưu trên trình duyệt của bạn (localStorage).</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Chat với bạn học có thật không? <span>+</span></button>
+        <div class="faq-a"><p>Đây là bản demo chạy hoàn toàn trên trình duyệt (không cần máy chủ). Tin nhắn được lưu cục bộ và có bạn học ảo trả lời để bạn trải nghiệm. Để chat thật giữa nhiều người, cần thêm máy chủ (backend) — sẵn sàng hỗ trợ khi bạn cần!</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Dữ liệu của tôi có được lưu ở đâu? <span>+</span></button>
+        <div class="faq-a"><p>Mọi dữ liệu (điểm rèn luyện, bài viết, tin nhắn chat) đều lưu trên trình duyệt của bạn bằng localStorage — riêng tư, không gửi đi đâu cả.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <div class="container cta-box reveal">
+    <h2>🍃 Sẵn sàng học tập cùng <span class="gradient-text">Lá Đu Đủ</span> chưa?</h2>
+    <p>Tính điểm rèn luyện, xem video, đăng bài và chat — tất cả trong một nơi.</p>
+    <a href="#diem-ren-luyen" class="btn btn-primary btn-lg magnetic">📊 Bắt đầu ngay</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <a href="#trang-chu" class="logo"><span class="logo-icon">🍃</span><span class="logo-text">LÁ ĐU ĐỦ<small>HỌC TẬP</small></span></a>
+      <p>Web học tập hỗ trợ sinh viên — học tập, rèn luyện, chia sẻ và kết nối.</p>
+    </div>
+    <div>
+      <h4>Tính năng</h4>
+      <a href="#diem-ren-luyen">Điểm rèn luyện</a><a href="#video">Video học</a><a href="#bai-viet">Đăng bài</a><a href="#chat">Chat</a>
+    </div>
+    <div>
+      <h4>Hỗ trợ</h4>
+      <a href="#faq">Câu hỏi thường gặp</a><a href="#bai-viet">Diễn đàn</a><a href="#chat">Hỏi đáp nhanh</a>
+    </div>
+    <div>
+      <h4>Thông tin</h4>
+      <p>📚 Học liệu miễn phí</p>
+      <p>🟢 <span class="status-ok">Đang hoạt động</span></p>
+      <p>💾 Dữ liệu lưu trên trình duyệt</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Lá Đu Đủ Học Tập — Được làm bằng 🍃 và ❤️ tại Việt Nam.</div>
+</footer>
+
+<!-- ===== MODAL VIDEO ===== -->
+<div id="video-modal" hidden>
+  <div class="vm-backdrop" data-close></div>
+  <div class="vm-box">
+    <div class="vm-head">
+      <strong id="vm-title">Video bài giảng</strong>
+      <button class="vm-close" data-close aria-label="Đóng">✕</button>
+    </div>
+    <div class="vm-player">
+      <iframe id="vm-frame" title="Video bài giảng" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="vm-note">▶️ Video nhúng từ YouTube (chế độ không cookie) — trang không chèn quảng cáo.</p>
+  </div>
+</div>
+
+<button id="back-top" aria-label="Lên đầu trang">↑</button>
+
+<script src="js/main.js"></script>
+<script src="js/learning.js"></script>
+</body>
+</html>
