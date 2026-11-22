@@ -1,0 +1,63 @@
+<%#
+  partials/navbar.ejs — Thanh điều hướng chính
+  ---------------------------------------------------------------------------
+  - Mobile: nút hamburger (vùng chạm 44×44px) + menu trượt
+  - PC: menu ngang, có trạng thái active theo route
+  - Giai đoạn 2: thêm hiệu ứng chuyển trang, active indicator trượt
+-%>
+<header class="site-header" data-header>
+  <div class="shell site-header__inner">
+    <a class="brand" href="/" aria-label="<%= app.name %> — về trang chủ">
+      <span class="brand__mark" aria-hidden="true">🍃</span>
+      <span class="brand__text">
+        <strong>Lá Đu Đủ</strong>
+        <small>Community</small>
+      </span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="primary-nav"
+      aria-label="Mở menu điều hướng"
+    >
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+      <span class="nav-toggle__bar" aria-hidden="true"></span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav" data-nav aria-label="Điều hướng chính">
+      <ul class="primary-nav__list">
+        <% navItems.forEach(function (item) { %>
+          <li>
+            <a class="primary-nav__link <%= isActive(item.href) %>" href="<%= item.href %>">
+              <span aria-hidden="true"><%= item.icon %></span>
+              <span><%= item.label %></span>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+
+      <div class="primary-nav__auth">
+        <% if (currentUser) { %>
+          <a class="btn btn--ghost btn--sm" href="/profile">
+            <span class="avatar avatar--sm" aria-hidden="true"><%= fmt.initials(currentUser.display_name) %></span>
+            <span><%= currentUser.display_name %></span>
+          </a>
+          <% if (currentUser.role === 'admin') { %>
+            <a class="btn btn--ghost btn--sm" href="/admin">Quản trị</a>
+          <% } %>
+          <form action="/auth/logout" method="post" class="inline-form">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button class="btn btn--ghost btn--sm" type="submit">Đăng xuất</button>
+          </form>
+        <% } else { %>
+          <a class="btn btn--ghost btn--sm" href="/login">Đăng nhập</a>
+          <a class="btn btn--primary btn--sm" href="/register">Tham gia</a>
+        <% } %>
+      </div>
+    </nav>
+  </div>
+</header>

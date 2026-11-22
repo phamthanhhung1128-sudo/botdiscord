@@ -1,0 +1,19 @@
+<%- include('../partials/head', { title: 'Không tìm thấy trang' }) %>
+<%- include('../partials/navbar') %>
+
+<main id="main" class="shell page">
+  <section class="error-panel">
+    <p class="error-panel__code">404</p>
+    <h1>Không tìm thấy trang này</h1>
+    <p class="muted">
+      Đường dẫn <code><%= typeof path !== 'undefined' ? path : '' %></code> không tồn tại
+      hoặc nội dung đã bị di chuyển.
+    </p>
+    <div class="error-panel__actions">
+      <a class="btn btn--primary" href="/">Về trang chủ</a>
+      <a class="btn btn--ghost" href="/posts">Xem bài viết</a>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,26 @@
+<%#
+  partials/flash.ejs — Thông báo 1 lần (flash message)
+  ---------------------------------------------------------------------------
+  `flash` là object: { success: [...], error: [...], warning: [...], info: [...] }
+  Dùng role="status" + aria-live để trình đọc màn hình đọc được thông báo.
+-%>
+<%
+  const flashTypes = ['success', 'error', 'warning', 'info'];
+  const flashIcons = { success: '✅', error: '⛔', warning: '⚠️', info: 'ℹ️' };
+  const hasFlash = typeof flash !== 'undefined' && flash && flashTypes.some(function (t) {
+    return Array.isArray(flash[t]) && flash[t].length > 0;
+  });
+%>
+<% if (hasFlash) { %>
+  <div class="flash-stack" role="status" aria-live="polite">
+    <% flashTypes.forEach(function (type) { %>
+      <% (Array.isArray(flash[type]) ? flash[type] : []).forEach(function (message) { %>
+        <div class="flash flash--<%= type %>">
+          <span class="flash__icon" aria-hidden="true"><%= flashIcons[type] %></span>
+          <span class="flash__text"><%= message %></span>
+          <button type="button" class="flash__close" data-flash-close aria-label="Đóng thông báo">✕</button>
+        </div>
+      <% }); %>
+    <% }); %>
+  </div>
+<% } %>

@@ -1,0 +1,18 @@
+<%- include('../partials/head', { title: 'Không có quyền' }) %>
+<%- include('../partials/navbar') %>
+
+<main id="main" class="shell page">
+  <section class="error-panel">
+    <p class="error-panel__code">403</p>
+    <h1><%= typeof title !== 'undefined' ? title : 'Không có quyền truy cập' %></h1>
+    <p class="muted"><%= typeof message !== 'undefined' ? message : 'Bạn không có quyền truy cập trang này.' %></p>
+    <div class="error-panel__actions">
+      <a class="btn btn--primary" href="/">Về trang chủ</a>
+      <% if (!currentUser) { %>
+        <a class="btn btn--ghost" href="/login">Đăng nhập</a>
+      <% } %>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
