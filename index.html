@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Máy chủ Lá Đu Đủ — Server Game Cộng Đồng Việt Nam</title>
-<meta name="description" content="Máy chủ Lá Đu Đủ — thế giới game nhiệt đới đầy màu sắc. Sinh tồn, SkyBlock, Dungeon, MiniGame. Tham gia ngay: play.ladudu.vn" />
+<title>Lá Đu Đủ Học Tập — Tính điểm rèn luyện, Video học, Đăng bài & Chat</title>
+<meta name="description" content="Web học tập hỗ trợ sinh viên: tính điểm rèn luyện, xem video bài giảng không quảng cáo, đăng bài chia sẻ và chat cùng bạn học." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍃</text></svg>" />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/learning.css" />
 </head>
 <body>
 
 <!-- ===== PRELOADER ===== -->
 <div id="preloader" aria-hidden="true">
   <div class="loader-leaf">🍃</div>
-  <div class="loader-text">LÁ ĐU ĐỦ</div>
+  <div class="loader-text">LÁ ĐU ĐỦ HỌC TẬP</div>
   <div class="loader-bar"><span></span></div>
 </div>
 
@@ -29,20 +30,19 @@
 <header id="navbar">
   <a href="#trang-chu" class="logo">
     <span class="logo-icon">🍃</span>
-    <span class="logo-text">LÁ ĐU ĐỦ<small>SERVER</small></span>
+    <span class="logo-text">LÁ ĐU ĐỦ<small>HỌC TẬP</small></span>
   </a>
   <nav id="nav-links">
     <a href="#trang-chu" class="nav-link active">Trang chủ</a>
-    <a href="#gioi-thieu" class="nav-link">Giới thiệu</a>
-    <a href="#tinh-nang" class="nav-link">Tính năng</a>
-    <a href="#che-do" class="nav-link">Chế độ chơi</a>
-    <a href="#tham-gia" class="nav-link">Tham gia</a>
-    <a href="#bxh" class="nav-link">Bảng xếp hạng</a>
+    <a href="#diem-ren-luyen" class="nav-link">Điểm rèn luyện</a>
+    <a href="#video" class="nav-link">Video học</a>
+    <a href="#bai-viet" class="nav-link">Đăng bài</a>
+    <a href="#chat" class="nav-link">Chat</a>
     <a href="#faq" class="nav-link">FAQ</a>
   </nav>
   <div class="nav-actions">
-    <div class="online-pill"><span class="dot"></span><span id="online-count">1.248</span> đang chơi</div>
-    <button class="btn btn-primary btn-sm magnetic" data-copy-ip>📋 Copy IP</button>
+    <div class="online-pill"><span class="dot"></span><span id="online-count">248</span> đang học</div>
+    <a href="#diem-ren-luyen" class="btn btn-primary btn-sm magnetic">📊 Tính điểm ngay</a>
     <button id="menu-btn" aria-label="Mở menu">☰</button>
   </div>
 </header>
@@ -53,247 +53,224 @@
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
-    <div class="hero-badge reveal">🌴 Máy chủ game cộng đồng Việt Nam</div>
+    <div class="hero-badge reveal">🎓 Web học tập hỗ trợ sinh viên</div>
     <h1 class="hero-title reveal" data-delay="100">
-      <span class="line">MÁY CHỦ</span>
-      <span class="line gradient-text">LÁ ĐU ĐỦ</span>
+      <span class="line">HỌC TẬP • RÈN LUYỆN</span>
+      <span class="line gradient-text">CHIA SẺ • KẾT NỐI</span>
     </h1>
     <p class="hero-desc reveal" data-delay="200">
-      Khám phá đảo nhiệt đới đầy màu sắc — nơi hội tụ của <strong>Sinh Tồn</strong>,
-      <strong>SkyBlock</strong>, <strong>Dungeon</strong> và hàng loạt MiniGame hấp dẫn.
-      Chơi miễn phí, không cần mod, vào là chơi ngay!
+      Nền tảng học tập <strong>Lá Đu Đủ</strong> — tính <strong>điểm rèn luyện</strong> nhanh chóng,
+      xem <strong>video bài giảng không quảng cáo</strong>, <strong>đăng bài chia sẻ</strong> kiến thức
+      và <strong>chat</strong> cùng bạn học mọi lúc, mọi nơi.
     </p>
 
     <div class="hero-cta reveal" data-delay="300">
-      <button class="btn btn-primary btn-lg magnetic" data-copy-ip>🎮 Chơi ngay — Copy IP</button>
-      <a href="#gioi-thieu" class="btn btn-ghost btn-lg magnetic">Khám phá thêm ↓</a>
+      <a href="#diem-ren-luyen" class="btn btn-primary btn-lg magnetic">📊 Tính điểm rèn luyện</a>
+      <a href="#video" class="btn btn-ghost btn-lg magnetic">▶️ Xem video học</a>
     </div>
 
-    <div class="ip-box reveal" data-delay="400">
-      <span class="ip-label">IP MÁY CHỦ</span>
-      <code id="server-ip">play.ladudu.vn</code>
-      <button class="copy-btn" data-copy-ip aria-label="Sao chép IP">📋</button>
-    </div>
-
-    <div class="hero-stats reveal" data-delay="500">
-      <div class="hstat"><strong><span class="counter" data-target="1250">0</span>+</strong><span>Người chơi</span></div>
-      <div class="hstat"><strong><span class="counter" data-target="99">0</span>%</strong><span>Uptime</span></div>
-      <div class="hstat"><strong><span class="counter" data-target="24">0</span>/7</strong><span>Hỗ trợ</span></div>
-      <div class="hstat"><strong><span class="counter" data-target="15">0</span>+</strong><span>Chế độ chơi</span></div>
+    <div class="hero-stats reveal" data-delay="400">
+      <div class="hstat"><strong><span class="counter" data-target="5200">0</span>+</strong><span>Học viên</span></div>
+      <div class="hstat"><strong><span class="counter" data-target="350">0</span>+</strong><span>Video bài giảng</span></div>
+      <div class="hstat"><strong><span class="counter" data-target="1200">0</span>+</strong><span>Bài viết chia sẻ</span></div>
+      <div class="hstat"><strong><span class="counter" data-target="98">0</span>%</strong><span>Hài lòng</span></div>
     </div>
   </div>
 
   <div class="hero-cards" aria-hidden="true">
-    <div class="float-card fc1" data-parallax="30">⚔️ Dungeon<br /><small>Boss mỗi ngày</small></div>
-    <div class="float-card fc2" data-parallax="-25">🏝️ SkyBlock<br /><small>Đảo bay mơ ước</small></div>
-    <div class="float-card fc3" data-parallax="20">🎁 Quà tặng<br /><small>Mỗi ngày đăng nhập</small></div>
+    <div class="float-card fc1" data-parallax="30">📊 Điểm rèn luyện<br /><small>Tính trong 1 phút</small></div>
+    <div class="float-card fc2" data-parallax="-25">▶️ Video không quảng cáo<br /><small>Học tập trung</small></div>
+    <div class="float-card fc3" data-parallax="20">💬 Chat bạn học<br /><small>Hỏi & đáp nhanh</small></div>
   </div>
 
-  <a href="#gioi-thieu" class="scroll-hint" aria-label="Cuộn xuống">⌄</a>
+  <a href="#diem-ren-luyen" class="scroll-hint" aria-label="Cuộn xuống">⌄</a>
 </section>
 
 <!-- ===== MARQUEE ===== -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>🍃 SINH TỒN</span><span>🏝️ SKYBLOCK</span><span>⚔️ DUNGEON</span><span>🎮 MINIGAME</span><span>🏆 SỰ KIỆN MỖI TUẦN</span><span>🎁 QUÀ ĐĂNG NHẬP</span><span>👥 CỘNG ĐỒNG 5.000+ THÀNH VIÊN</span>
-    <span>🍃 SINH TỒN</span><span>🏝️ SKYBLOCK</span><span>⚔️ DUNGEON</span><span>🎮 MINIGAME</span><span>🏆 SỰ KIỆN MỖI TUẦN</span><span>🎁 QUÀ ĐĂNG NHẬP</span><span>👥 CỘNG ĐỒNG 5.000+ THÀNH VIÊN</span>
+    <span>📊 ĐIỂM RÈN LUYỆN</span><span>▶️ VIDEO KHÔNG QUẢNG CÁO</span><span>✍️ ĐĂNG BÀI CHIA SẺ</span><span>💬 CHAT BẠN HỌC</span><span>📚 HỌC LIỆU MIỄN PHÍ</span><span>🎓 HỖ TRỢ SINH VIÊN</span>
+    <span>📊 ĐIỂM RÈN LUYỆN</span><span>▶️ VIDEO KHÔNG QUẢNG CÁO</span><span>✍️ ĐĂNG BÀI CHIA SẺ</span><span>💬 CHAT BẠN HỌC</span><span>📚 HỌC LIỆU MIỄN PHÍ</span><span>🎓 HỖ TRỢ SINH VIÊN</span>
   </div>
 </div>
 
-<!-- ===== GIỚI THIỆU ===== -->
-<section id="gioi-thieu" class="section">
-  <div class="container grid-2">
-    <div class="about-visual reveal">
-      <img src="assets/hero-bg.jpg" alt="Thế giới Máy chủ Lá Đu Đủ" class="about-img tilt" />
-      <div class="about-badge">⭐ 4.9/5<br /><small>Đánh giá cộng đồng</small></div>
-      <div class="about-badge b2">🛡️ Anti-cheat<br /><small>Chơi công bằng</small></div>
-    </div>
-    <div>
-      <span class="section-tag reveal">🍃 Về chúng tôi</span>
-      <h2 class="section-title reveal" data-delay="100">Một đảo nhiệt đới<br /><span class="gradient-text">cho riêng bạn</span></h2>
-      <p class="reveal" data-delay="200">
-        <strong>Máy chủ Lá Đu Đủ</strong> ra đời với mong muốn tạo một sân chơi lành mạnh,
-        thân thiện và đầy sáng tạo cho cộng đồng game thủ Việt. Từ những ngày đầu chỉ vài
-        chục người chơi, hôm nay Lá Đu Đủ đã trở thành mái nhà của hàng nghìn anh em khắp cả nước.
-      </p>
-      <p class="reveal" data-delay="250">
-        Đội ngũ quản trị luôn lắng nghe cộng đồng, cập nhật tính năng mới mỗi tuần,
-        tổ chức sự kiện sôi động và giữ môi trường chơi luôn công bằng, vui vẻ cho mọi lứa tuổi.
-      </p>
-      <ul class="check-list reveal" data-delay="300">
-        <li>✅ Máy chủ cấu hình mạnh, ping thấp toàn quốc</li>
-        <li>✅ Không pay-to-win — kỹ năng là tất cả</li>
-        <li>✅ Hỗ trợ đa nền tảng: PC, Mobile, Console</li>
-        <li>✅ Cộng đồng thân thiện, không toxic</li>
-      </ul>
-      <a href="#tham-gia" class="btn btn-primary magnetic reveal" data-delay="400">Tham gia ngay →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TÍNH NĂNG ===== -->
-<section id="tinh-nang" class="section section-alt">
+<!-- ===== 1. ĐIỂM RÈN LUYỆN ===== -->
+<section id="diem-ren-luyen" class="section">
   <div class="container">
-    <span class="section-tag reveal">✨ Tính năng nổi bật</span>
-    <h2 class="section-title reveal" data-delay="100">Vì sao chọn <span class="gradient-text">Lá Đu Đủ?</span></h2>
-    <p class="section-desc reveal" data-delay="200">Những điều khiến hàng nghìn người chơi quay lại mỗi ngày.</p>
+    <span class="section-tag reveal">📊 Tính điểm rèn luyện</span>
+    <h2 class="section-title reveal" data-delay="100">Tính <span class="gradient-text">điểm rèn luyện</span> trong 1 phút</h2>
+    <p class="section-desc reveal" data-delay="200">
+      Thang điểm 100 theo quy định Bộ GD&ĐT: Học tập (20) • Chấp hành nội quy (25) •
+      Hoạt động xã hội (20) • Công dân cộng đồng (20) • Văn hóa, thể thao (15).
+      Kéo thanh trượt theo thực tế của bạn — điểm sẽ tự tính!
+    </p>
 
-    <div class="features-grid">
-      <article class="feature-card tilt reveal">
-        <div class="f-icon">🚀</div>
-        <h3>Máy chủ siêu mượt</h3>
-        <p>Phần cứng đời mới, tối ưu FPS, ping dưới 30ms cho hầu hết khu vực Việt Nam.</p>
-      </article>
-      <article class="feature-card tilt reveal" data-delay="100">
-        <div class="f-icon">🛡️</div>
-        <h3>Anti-cheat 24/7</h3>
-        <p>Hệ thống chống gian lận tự động, xử lý nghiêm minh — chơi là công bằng.</p>
-      </article>
-      <article class="feature-card tilt reveal" data-delay="200">
-        <div class="f-icon">🎁</div>
-        <h3>Quà tặng mỗi ngày</h3>
-        <p>Đăng nhập nhận xu, vật phẩm hiếm và phần thưởng sự kiện cực hấp dẫn.</p>
-      </article>
-      <article class="feature-card tilt reveal">
-        <div class="f-icon">🏆</div>
-        <h3>Sự kiện mỗi tuần</h3>
-        <p>Giải đấu, boss chiến, đua top — phần thưởng lên tới hàng triệu đồng.</p>
-      </article>
-      <article class="feature-card tilt reveal" data-delay="100">
-        <div class="f-icon">👥</div>
-        <h3>Cộng đồng thân thiện</h3>
-        <p>Discord sôi nổi, hỗ trợ nhanh, anh em luôn sẵn sàng giúp đỡ người mới.</p>
-      </article>
-      <article class="feature-card tilt reveal" data-delay="200">
-        <div class="f-icon">🔄</div>
-        <h3>Cập nhật liên tục</h3>
-        <p>Map mới, nhiệm vụ mới, tính năng mới được cập nhật đều đặn mỗi tuần.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CHẾ ĐỘ CHƠI ===== -->
-<section id="che-do" class="section">
-  <div class="container">
-    <span class="section-tag reveal">🎮 Chế độ chơi</span>
-    <h2 class="section-title reveal" data-delay="100">Chọn cuộc phiêu lưu <span class="gradient-text">của bạn</span></h2>
-
-    <div class="tabs reveal" data-delay="200" role="tablist">
-      <button class="tab active" data-tab="sinh-ton" role="tab">🌲 Sinh Tồn</button>
-      <button class="tab" data-tab="skyblock" role="tab">🏝️ SkyBlock</button>
-      <button class="tab" data-tab="dungeon" role="tab">⚔️ Dungeon</button>
-    </div>
-
-    <div class="tab-panels reveal" data-delay="300">
-      <article class="tab-panel active" id="panel-sinh-ton">
-        <img src="assets/mode-survival.jpg" alt="Chế độ Sinh Tồn" />
-        <div class="panel-body">
-          <h3>🌲 Sinh Tồn — Xây dựng đế chế của riêng bạn</h3>
-          <p>Khám phá thế giới rộng lớn, khai thác tài nguyên, xây nhà, trồng trọt và lập bang hội cùng bạn bè. Hệ thống kinh tế, chợ người chơi và nhiệm vụ hàng ngày chờ bạn chinh phục.</p>
-          <ul><li>🗺️ Map 10.000 x 10.000</li><li>🏠 Đất riêng, bảo vệ công trình</li><li>💰 Kinh tế & chợ người chơi</li></ul>
-          <button class="btn btn-primary magnetic" data-copy-ip>Chơi Sinh Tồn ngay</button>
+    <div class="rl-grid">
+      <!-- Form -->
+      <div class="rl-form card reveal">
+        <div class="rl-inputs">
+          <label>Họ tên sinh viên
+            <input type="text" id="rl-name" placeholder="VD: Nguyễn Văn A" />
+          </label>
+          <label>Học kỳ
+            <select id="rl-semester">
+              <option>Học kỳ 1</option><option>Học kỳ 2</option>
+              <option>Học kỳ 3</option><option>Học kỳ 4</option>
+              <option>Học kỳ 5</option><option>Học kỳ 6</option>
+              <option>Học kỳ 7</option><option>Học kỳ 8</option>
+            </select>
+          </label>
         </div>
-      </article>
 
-      <article class="tab-panel" id="panel-skyblock">
-        <img src="assets/mode-skyblock.jpg" alt="Chế độ SkyBlock" />
-        <div class="panel-body">
-          <h3>🏝️ SkyBlock — Biến đảo bay thành thiên đường</h3>
-          <p>Bắt đầu từ một đảo nhỏ lơ lửng giữa mây trời, mở rộng đảo, nuôi trồng, chăn nuôi và nâng cấp đảo lên cấp độ huyền thoại. Thách đấu đảo với bạn bè mỗi tuần!</p>
-          <ul><li>🏝️ Nâng cấp đảo theo cấp</li><li>🐣 Máy ấp trứng tự động</li><li>🏆 Bảng xếp hạng đảo</li></ul>
-          <button class="btn btn-primary magnetic" data-copy-ip>Chơi SkyBlock ngay</button>
+        <div id="rl-categories"><!-- JS tạo các mục --></div>
+
+        <div class="rl-actions">
+          <button class="btn btn-primary magnetic" id="rl-save">💾 Lưu kết quả</button>
+          <button class="btn btn-ghost magnetic" id="rl-sample">✨ Điền mẫu</button>
+          <button class="btn btn-ghost magnetic" id="rl-reset">↺ Đặt lại</button>
         </div>
-      </article>
-
-      <article class="tab-panel" id="panel-dungeon">
-        <img src="assets/mode-dungeon.jpg" alt="Chế độ Dungeon" />
-        <div class="panel-body">
-          <h3>⚔️ Dungeon — Đánh boss, nhận loot huyền thoại</h3>
-          <p>Đưa đội của bạn vào những hầm ngục đầy quái vật và boss khổng lồ. Mỗi tầng là một thử thách mới với trang bị, phụ kiện và vũ khí cực mạnh chờ bạn sở hữu.</p>
-          <ul><li>🐉 50+ tầng hầm ngục</li><li>⚔️ Trang bị huyền thoại</li><li>👥 Chơi theo đội 4 người</li></ul>
-          <button class="btn btn-primary magnetic" data-copy-ip>Chơi Dungeon ngay</button>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CÁCH THAM GIA ===== -->
-<section id="tham-gia" class="section section-alt">
-  <div class="container">
-    <span class="section-tag reveal">🚀 Cách tham gia</span>
-    <h2 class="section-title reveal" data-delay="100">Chỉ 3 bước — <span class="gradient-text">vào chơi ngay</span></h2>
-
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-num">1</div>
-        <div class="step-icon">🎮</div>
-        <h3>Mở game</h3>
-        <p>Mở game của bạn (PC, Mobile hoặc Console đều được).</p>
       </div>
-      <div class="step-card reveal" data-delay="150">
-        <div class="step-num">2</div>
-        <div class="step-icon">➕</div>
-        <h3>Thêm máy chủ</h3>
-        <p>Chọn <em>Thêm máy chủ</em> và nhập IP bên dưới.</p>
-      </div>
-      <div class="step-card reveal" data-delay="300">
-        <div class="step-num">3</div>
-        <div class="step-icon">🍃</div>
-        <h3>Chơi thôi!</h3>
-        <p>Nhấn kết nối và bắt đầu hành trình trên đảo Lá Đu Đủ.</p>
+
+      <!-- Kết quả -->
+      <div class="rl-result card reveal" data-delay="150">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 200 200">
+            <circle class="ring-bg" cx="100" cy="100" r="86" />
+            <circle class="ring-fg" id="ring-fg" cx="100" cy="100" r="86" />
+          </svg>
+          <div class="ring-center">
+            <strong id="rl-total">0</strong>
+            <span>/ 100 điểm</span>
+          </div>
+        </div>
+        <div class="rl-rating" id="rl-rating">Chưa xếp loại</div>
+        <p class="rl-hint" id="rl-hint">Hãy kéo các thanh trượt để tính điểm của bạn.</p>
+
+        <div class="rl-scale">
+          <span>Yếu &lt;50</span><span>TB 50–64</span><span>Khá 65–79</span><span>Tốt 80–89</span><span>XS 90+</span>
+        </div>
+
+        <h4>🕘 Lịch sử của bạn</h4>
+        <div id="rl-history" class="rl-history"><p class="muted">Chưa có kết quả nào được lưu.</p></div>
+        <button class="btn btn-ghost btn-sm magnetic" id="rl-clear-history">🗑️ Xóa lịch sử</button>
       </div>
     </div>
-
-    <div class="ip-box big reveal" data-delay="400">
-      <span class="ip-label">IP MÁY CHỦ</span>
-      <code>play.ladudu.vn</code>
-      <button class="btn btn-primary magnetic" data-copy-ip>📋 Sao chép IP</button>
-    </div>
-    <p class="note reveal" data-delay="450">💡 Mẹo: Nhấn nút trên để sao chép IP, sau đó dán vào game là xong!</p>
   </div>
 </section>
 
-<!-- ===== BẢNG XẾP HẠNG ===== -->
-<section id="bxh" class="section">
+<!-- ===== 2. VIDEO HỌC ===== -->
+<section id="video" class="section section-alt">
   <div class="container">
-    <span class="section-tag reveal">🏆 Bảng xếp hạng</span>
-    <h2 class="section-title reveal" data-delay="100">Top người chơi <span class="gradient-text">tuần này</span></h2>
+    <span class="section-tag reveal">▶️ Video học tập</span>
+    <h2 class="section-title reveal" data-delay="100">Xem video bài giảng <span class="gradient-text">không quảng cáo</span></h2>
+    <p class="section-desc reveal" data-delay="200">
+      Tuyển chọn video bài giảng chất lượng theo môn học. Video được nhúng từ YouTube
+      (chế độ không cookie) — trang không chèn quảng cáo, bạn học tập trung không gián đoạn.
+    </p>
 
-    <div class="ranking reveal" data-delay="200">
-      <div class="rank-row top1"><span class="rank-medal">🥇</span><span class="rank-name">HungPapaya</span><span class="rank-bar"><i style="--w:98%"></i></span><span class="rank-point">98.450 điểm</span></div>
-      <div class="rank-row"><span class="rank-medal">🥈</span><span class="rank-name">LaDuDuQueen</span><span class="rank-bar"><i style="--w:92%"></i></span><span class="rank-point">92.130 điểm</span></div>
-      <div class="rank-row"><span class="rank-medal">🥉</span><span class="rank-name">ProCanTho</span><span class="rank-bar"><i style="--w:87%"></i></span><span class="rank-point">87.760 điểm</span></div>
-      <div class="rank-row"><span class="rank-medal">4</span><span class="rank-name">SkyMasterVN</span><span class="rank-bar"><i style="--w:79%"></i></span><span class="rank-point">79.340 điểm</span></div>
-      <div class="rank-row"><span class="rank-medal">5</span><span class="rank-name">DungeonKing</span><span class="rank-bar"><i style="--w:74%"></i></span><span class="rank-point">74.210 điểm</span></div>
+    <div class="video-filters reveal" data-delay="250" id="video-filters">
+      <button class="vfilter active" data-cat="all">Tất cả</button>
+      <button class="vfilter" data-cat="toan">📐 Toán</button>
+      <button class="vfilter" data-cat="van">📖 Văn</button>
+      <button class="vfilter" data-cat="ly">⚛️ Vật lý</button>
+      <button class="vfilter" data-cat="tin">💻 Tin học</button>
+      <button class="vfilter" data-cat="anh">🗣️ Tiếng Anh</button>
+      <button class="vfilter" data-cat="kynang">🌱 Kỹ năng sống</button>
     </div>
-    <p class="note reveal" data-delay="300">⚠️ Bảng xếp hạng minh họa — tên thật sẽ cập nhật tự động khi máy chủ chính thức mở!</p>
+
+    <div class="video-grid reveal" data-delay="300" id="video-grid"><!-- JS tạo --></div>
+    <p class="note reveal">💡 Mẹo: bấm vào video để xem ngay trong trang, không cần rời khỏi web.</p>
   </div>
 </section>
 
-<!-- ===== ĐÁNH GIÁ ===== -->
-<section id="danh-gia" class="section section-alt">
+<!-- ===== 3. ĐĂNG BÀI ===== -->
+<section id="bai-viet" class="section">
   <div class="container">
-    <span class="section-tag reveal">💬 Cộng đồng nói gì?</span>
-    <h2 class="section-title reveal" data-delay="100">Người chơi <span class="gradient-text">yêu thích</span></h2>
+    <span class="section-tag reveal">✍️ Diễn đàn học tập</span>
+    <h2 class="section-title reveal" data-delay="100">Đăng bài <span class="gradient-text">chia sẻ kiến thức</span></h2>
+    <p class="section-desc reveal" data-delay="200">
+      Hỏi bài, chia sẻ tài liệu, kinh nghiệm ôn thi hay mẹo học tập — bài viết của bạn
+      sẽ được lưu lại và hiển thị cho mọi người cùng đọc.
+    </p>
 
-    <div class="testimonials-grid">
-      <blockquote class="testi-card tilt reveal">
-        <div class="stars">★★★★★</div>
-        <p>"Máy chủ mượt nhất mình từng chơi, ping thấp, admin nhiệt tình. Chơi ở đây 3 tháng rồi vẫn chưa chán!"</p>
-        <footer>— Minh Tuấn, Cần Thơ</footer>
-      </blockquote>
-      <blockquote class="testi-card tilt reveal" data-delay="150">
-        <div class="stars">★★★★★</div>
-        <p>"SkyBlock ở Lá Đu Đủ đỉnh thật sự, đảo mình đã lên top 10 rồi. Cộng đồng vui vẻ, không toxic."</p>
-        <footer>— Ngọc Anh, Hà Nội</footer>
-      </blockquote>
-      <blockquote class="testi-card tilt reveal" data-delay="300">
-        <div class="stars">★★★★★</div>
-        <p>"Dungeon đánh boss cùng anh em cực cuốn. Sự kiện mỗi tuần đều có quà ngon. 10 điểm!"</p>
-        <footer>— Hoàng Nam, TP.HCM</footer>
-      </blockquote>
+    <div class="posts-layout">
+      <!-- Form đăng bài -->
+      <form class="post-form card reveal" id="post-form">
+        <h3>✍️ Viết bài mới</h3>
+        <label>Tên hiển thị
+          <input type="text" id="post-name" placeholder="Tên của bạn" maxlength="40" required />
+        </label>
+        <label>Chuyên mục
+          <select id="post-cat">
+            <option value="Hỏi bài">❓ Hỏi bài</option>
+            <option value="Tài liệu">📚 Tài liệu</option>
+            <option value="Kinh nghiệm">💡 Kinh nghiệm</option>
+            <option value="Ôn thi">🎯 Ôn thi</option>
+            <option value="Chia sẻ">💬 Chia sẻ</option>
+          </select>
+        </label>
+        <label>Tiêu đề
+          <input type="text" id="post-title" placeholder="Tiêu đề bài viết..." maxlength="90" required />
+        </label>
+        <label>Nội dung
+          <textarea id="post-body" rows="5" placeholder="Viết nội dung chia sẻ của bạn..." maxlength="1200" required></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary magnetic">🚀 Đăng bài</button>
+        <p class="muted small">Bài viết được lưu trên trình duyệt của bạn.</p>
+      </form>
+
+      <!-- Danh sách bài -->
+      <div class="posts-main reveal" data-delay="150">
+        <div class="posts-toolbar">
+          <input type="search" id="post-search" placeholder="🔍 Tìm bài viết..." />
+          <select id="post-filter">
+            <option value="all">Tất cả chuyên mục</option>
+            <option value="Hỏi bài">❓ Hỏi bài</option>
+            <option value="Tài liệu">📚 Tài liệu</option>
+            <option value="Kinh nghiệm">💡 Kinh nghiệm</option>
+            <option value="Ôn thi">🎯 Ôn thi</option>
+            <option value="Chia sẻ">💬 Chia sẻ</option>
+          </select>
+        </div>
+        <div id="posts-list" class="posts-list"><!-- JS tạo --></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. CHAT ===== -->
+<section id="chat" class="section section-alt">
+  <div class="container">
+    <span class="section-tag reveal">💬 Chat bạn học</span>
+    <h2 class="section-title reveal" data-delay="100">Trò chuyện, <span class="gradient-text">hỏi đáp nhanh</span></h2>
+    <p class="section-desc reveal" data-delay="200">
+      Phòng chat cộng đồng để trao đổi bài vở, rủ học nhóm và hỗ trợ lẫn nhau.
+      <em>(Bản demo: tin nhắn lưu trên trình duyệt, có bạn học ảo trả lời để bạn trải nghiệm.)</em>
+    </p>
+
+    <div class="chat-layout reveal" data-delay="250">
+      <!-- Danh sách online -->
+      <aside class="chat-users card">
+        <h4>🟢 Đang online (<span id="chat-online-n">8</span>)</h4>
+        <ul id="chat-users"></ul>
+      </aside>
+
+      <!-- Khung chat -->
+      <div class="chat-box card">
+        <div class="chat-head">
+          <span>💬 Phòng chat chung</span>
+          <button class="btn btn-ghost btn-sm" id="chat-clear">🗑️ Xóa chat</button>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-typing" id="chat-typing" hidden><span></span> đang gõ...</div>
+        <div class="chat-emojis">
+          <button>😀</button><button>😂</button><button>👍</button><button>❤️</button><button>🎉</button><button>📚</button><button>🔥</button>
+        </div>
+        <form class="chat-input" id="chat-form">
+          <input type="text" id="chat-text" placeholder="Nhắn tin... (Enter để gửi)" maxlength="300" autocomplete="off" />
+          <button type="submit" class="btn btn-primary magnetic">Gửi ➤</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
@@ -306,24 +283,24 @@
 
     <div class="faq-list reveal" data-delay="200">
       <div class="faq-item">
-        <button class="faq-q">Chơi ở Lá Đu Đủ có mất phí không? <span>+</span></button>
-        <div class="faq-a"><p>Hoàn toàn miễn phí! Mọi người đều có thể chơi đầy đủ tính năng. Nếu có gói hỗ trợ, đó là tự nguyện và không ảnh hưởng sức mạnh trong game (không pay-to-win).</p></div>
+        <button class="faq-q">Điểm rèn luyện được tính như thế nào? <span>+</span></button>
+        <div class="faq-a"><p>Theo thang 100 điểm gồm 5 tiêu chí: Học tập (20), Chấp hành nội quy & pháp luật (25), Hoạt động xã hội (20), Công dân trong cộng đồng (20), Văn hóa & thể thao (15). Xếp loại: 90–100 Xuất sắc, 80–89 Tốt, 65–79 Khá, 50–64 Trung bình, dưới 50 Yếu.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Tôi cần tải mod gì để chơi? <span>+</span></button>
-        <div class="faq-a"><p>Không cần tải bất cứ mod nào. Chỉ cần game gốc, thêm IP máy chủ <strong>play.ladudu.vn</strong> là vào chơi ngay.</p></div>
+        <button class="faq-q">Xem video có quảng cáo không? <span>+</span></button>
+        <div class="faq-a"><p>Trang không chèn quảng cáo. Video được nhúng từ YouTube ở chế độ không cookie (<em>youtube-nocookie</em>) để hạn chế tối đa quảng cáo và theo dõi. Bạn xem ngay trong trang, không cần rời khỏi web.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Máy chủ hỗ trợ phiên bản nào? <span>+</span></button>
-        <div class="faq-a"><p>Hỗ trợ từ phiên bản 1.16 đến 1.21 mới nhất, trên cả PC, Mobile (PE/Bedrock) và Console.</p></div>
+        <button class="faq-q">Đăng bài có cần đăng ký tài khoản không? <span>+</span></button>
+        <div class="faq-a"><p>Không cần! Chỉ cần nhập tên hiển thị, viết tiêu đề và nội dung rồi bấm Đăng bài. Bài viết được lưu trên trình duyệt của bạn (localStorage).</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Làm sao liên hệ khi gặp sự cố? <span>+</span></button>
-        <div class="faq-a"><p>Tham gia Discord của máy chủ để được hỗ trợ 24/7, hoặc nhắn tin trực tiếp cho đội ngũ quản trị trong game bằng lệnh <strong>/support</strong>.</p></div>
+        <button class="faq-q">Chat với bạn học có thật không? <span>+</span></button>
+        <div class="faq-a"><p>Đây là bản demo chạy hoàn toàn trên trình duyệt (không cần máy chủ). Tin nhắn được lưu cục bộ và có bạn học ảo trả lời để bạn trải nghiệm. Để chat thật giữa nhiều người, cần thêm máy chủ (backend) — sẵn sàng hỗ trợ khi bạn cần!</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Có chơi được cùng bạn bè không? <span>+</span></button>
-        <div class="faq-a"><p>Chắc chắn rồi! Bạn có thể lập bang hội, xây nhà chung, đánh dungeon theo đội và tham gia sự kiện cùng bạn bè.</p></div>
+        <button class="faq-q">Dữ liệu của tôi có được lưu ở đâu? <span>+</span></button>
+        <div class="faq-a"><p>Mọi dữ liệu (điểm rèn luyện, bài viết, tin nhắn chat) đều lưu trên trình duyệt của bạn bằng localStorage — riêng tư, không gửi đi đâu cả.</p></div>
       </div>
     </div>
   </div>
@@ -332,9 +309,9 @@
 <!-- ===== CTA ===== -->
 <section class="cta-section">
   <div class="container cta-box reveal">
-    <h2>🍃 Sẵn sàng lên đảo <span class="gradient-text">Lá Đu Đủ</span> chưa?</h2>
-    <p>Hàng nghìn người chơi đang chờ bạn. Vào là có quà, chơi là vui!</p>
-    <button class="btn btn-primary btn-lg magnetic" data-copy-ip>🎮 Copy IP & Chơi ngay</button>
+    <h2>🍃 Sẵn sàng học tập cùng <span class="gradient-text">Lá Đu Đủ</span> chưa?</h2>
+    <p>Tính điểm rèn luyện, xem video, đăng bài và chat — tất cả trong một nơi.</p>
+    <a href="#diem-ren-luyen" class="btn btn-primary btn-lg magnetic">📊 Bắt đầu ngay</a>
   </div>
 </section>
 
@@ -342,29 +319,45 @@
 <footer>
   <div class="container footer-grid">
     <div>
-      <a href="#trang-chu" class="logo"><span class="logo-icon">🍃</span><span class="logo-text">LÁ ĐU ĐỦ<small>SERVER</small></span></a>
-      <p>Máy chủ game cộng đồng Việt Nam — nơi hội tụ của những nhà thám hiểm nhiệt đới.</p>
+      <a href="#trang-chu" class="logo"><span class="logo-icon">🍃</span><span class="logo-text">LÁ ĐU ĐỦ<small>HỌC TẬP</small></span></a>
+      <p>Web học tập hỗ trợ sinh viên — học tập, rèn luyện, chia sẻ và kết nối.</p>
     </div>
     <div>
-      <h4>Liên kết nhanh</h4>
-      <a href="#gioi-thieu">Giới thiệu</a><a href="#che-do">Chế độ chơi</a><a href="#tham-gia">Tham gia</a><a href="#faq">FAQ</a>
+      <h4>Tính năng</h4>
+      <a href="#diem-ren-luyen">Điểm rèn luyện</a><a href="#video">Video học</a><a href="#bai-viet">Đăng bài</a><a href="#chat">Chat</a>
     </div>
     <div>
-      <h4>Cộng đồng</h4>
-      <a href="#" onclick="return false">💬 Discord</a><a href="#" onclick="return false">📘 Facebook</a><a href="#" onclick="return false">📺 YouTube</a><a href="#" onclick="return false">🎵 TikTok</a>
+      <h4>Hỗ trợ</h4>
+      <a href="#faq">Câu hỏi thường gặp</a><a href="#bai-viet">Diễn đàn</a><a href="#chat">Hỏi đáp nhanh</a>
     </div>
     <div>
-      <h4>Máy chủ</h4>
-      <p>IP: <code>play.ladudu.vn</code></p>
-      <p>Trạng thái: <span class="status-ok">● Online</span></p>
-      <button class="btn btn-primary btn-sm magnetic" data-copy-ip>📋 Copy IP</button>
+      <h4>Thông tin</h4>
+      <p>📚 Học liệu miễn phí</p>
+      <p>🟢 <span class="status-ok">Đang hoạt động</span></p>
+      <p>💾 Dữ liệu lưu trên trình duyệt</p>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 Máy chủ Lá Đu Đủ — Được làm bằng 🍃 và ❤️ tại Việt Nam. Không liên kết với Mojang/Microsoft.</div>
+  <div class="footer-bottom">© 2026 Lá Đu Đủ Học Tập — Được làm bằng 🍃 và ❤️ tại Việt Nam.</div>
 </footer>
+
+<!-- ===== MODAL VIDEO ===== -->
+<div id="video-modal" hidden>
+  <div class="vm-backdrop" data-close></div>
+  <div class="vm-box">
+    <div class="vm-head">
+      <strong id="vm-title">Video bài giảng</strong>
+      <button class="vm-close" data-close aria-label="Đóng">✕</button>
+    </div>
+    <div class="vm-player">
+      <iframe id="vm-frame" title="Video bài giảng" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="vm-note">▶️ Video nhúng từ YouTube (chế độ không cookie) — trang không chèn quảng cáo.</p>
+  </div>
+</div>
 
 <button id="back-top" aria-label="Lên đầu trang">↑</button>
 
 <script src="js/main.js"></script>
+<script src="js/learning.js"></script>
 </body>
 </html>

@@ -3,8 +3,8 @@
    👉 Chỉnh thông tin máy chủ tại CONFIG bên dưới
    ============================================================ */
 const CONFIG = {
-  serverIp: 'play.ladudu.vn',   // IP máy chủ
-  baseOnline: 1248,             // Số người chơi cơ bản hiển thị
+  serverIp: 'play.ladudu.vn',   // (giữ lại cho tương thích)
+  baseOnline: 248,              // Số học viên online cơ bản hiển thị
   discord: 'https://discord.gg/ladudu',
 };
 
