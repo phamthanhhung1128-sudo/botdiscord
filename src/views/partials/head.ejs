@@ -1,0 +1,38 @@
+<%#
+  partials/head.ejs
+  ---------------------------------------------------------------------------
+  Mở đầu mọi trang: meta, SEO, preconnect, CSS.
+  Biến cần có: title (đã được set trong route hoặc dùng mặc định)
+  Giai đoạn 2: CSS sẽ được tách module và nạp theo trang (css/main.css).
+-%>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1f13" />
+  <meta name="color-scheme" content="dark light" />
+
+  <title><%= typeof title !== 'undefined' && title ? `${title} — ${app.name}` : app.name %></title>
+  <meta name="description" content="Nền tảng cộng đồng tích hợp Bot Discord: bài viết, chat, tin nhắn, học tập, điểm rèn luyện, cửa hàng và media." />
+
+  <%# Open Graph cơ bản %>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="<%= app.name %>" />
+  <meta property="og:title" content="<%= typeof title !== 'undefined' && title ? title : app.name %>" />
+  <meta property="og:description" content="Cộng đồng học tập & kết nối — tích hợp Bot Discord." />
+
+  <%# Chống nhảy bố cục (CLS) khi ảnh tải: khai báo trước kích thước trong CSS %>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍃</text></svg>" />
+
+  <%# CSS: Giai đoạn 1 dùng 1 file tạm; Giai đoạn 2 thay bằng hệ module %>
+  <link rel="stylesheet" href="/css/phase1.css" />
+  <% if (typeof pageCss !== 'undefined' && pageCss) { %>
+    <link rel="stylesheet" href="/css/pages/<%= pageCss %>.css" />
+  <% } %>
+
+  <%# Nonce để CSP cho phép script nội tuyến của chính trang này %>
+  <meta name="csrf-token" content="<%= csrfToken %>" />
+</head>
+<body class="<%= typeof bodyClass !== 'undefined' ? bodyClass : '' %>">
+  <a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>

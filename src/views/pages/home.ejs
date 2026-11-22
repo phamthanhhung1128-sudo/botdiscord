@@ -1,0 +1,133 @@
+<%#
+  pages/home.ejs — Trang chủ Giai đoạn 1
+  ---------------------------------------------------------------------------
+  Hiển thị "bảng điều khiển nền tảng": xác nhận Express + EJS + SQLite +
+  session + CSP + middleware đã hoạt động. Giai đoạn 3 sẽ thay bằng feed
+  cộng đồng thật (bài viết, hoạt động, thống kê người dùng).
+-%>
+<%- include('../partials/head', { title: 'Nền tảng đã sẵn sàng' }) %>
+<%- include('../partials/navbar') %>
+
+<main id="main" class="shell page">
+  <%- include('../partials/flash') %>
+
+  <section class="hero-panel">
+    <p class="eyebrow">Giai đoạn 1 / 4 — Nền tảng</p>
+    <h1 class="hero-panel__title">
+      Nền tảng <span class="text-gradient">đã sẵn sàng</span>
+    </h1>
+    <p class="hero-panel__lead">
+      Express + EJS + SQLite + Session + CSP đã chạy đúng. Toàn bộ cấu trúc thư mục,
+      schema 22 bảng và migration engine đã hoàn tất — sẵn sàng cho Giai đoạn 2 (giao diện).
+    </p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <strong><%= dbStats.tableCount %></strong>
+        <span>bảng dữ liệu</span>
+      </div>
+      <div class="stat">
+        <strong><%= counts.users %></strong>
+        <span>tài khoản</span>
+      </div>
+      <div class="stat">
+        <strong><%= counts.posts %></strong>
+        <span>bài viết</span>
+      </div>
+      <div class="stat">
+        <strong><%= dbStats.journalMode %></strong>
+        <span>journal mode</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel__title">✅ Đã hoàn thành ở Giai đoạn 1</h2>
+    <ul class="check-list">
+      <li><strong>Cấu trúc thư mục</strong> — tách rõ config / db / middleware / routes / views / services</li>
+      <li><strong>package.json</strong> — script <code>dev</code>, <code>start</code>, <code>db:init</code>, <code>db:migrate</code>, <code>db:seed</code>, <code>test</code></li>
+      <li><strong>schema-reference.sql</strong> — 22 bảng, 2 view, 21 index, có CHECK constraint &amp; khoá ngoại</li>
+      <li><strong>Migration engine</strong> — tự viết, có checksum chống sửa file cũ, chạy trong transaction</li>
+      <li><strong>initDb.js</strong> — tự tạo thư mục, sao lưu DB cũ, chạy migration còn thiếu</li>
+      <li><strong>Express app</strong> — Helmet + CSP nonce, compression, session SQLite, CSRF, rate limit</li>
+      <li><strong>Middleware xác thực</strong> — <code>attachUser</code>, <code>requireAuth</code>, <code>requireAdmin</code>, <code>requireModerator</code></li>
+      <li><strong>Error handling</strong> — 404, 403, 429, 500; không lộ stack trace ở production</li>
+      <li><strong>Health check</strong> — <a href="/health">/health</a> (JSON) và <a href="/health/page">/health/page</a></li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel__title">🗄️ Database</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <tbody>
+          <tr><th>Engine</th><td><%= dbStats.engine %></td></tr>
+          <tr><th>File</th><td><code><%= env.DATABASE_FILE %></code></td></tr>
+          <tr><th>Kích thước</th><td><%= (dbStats.fileSizeBytes / 1024).toFixed(1) %> KB</td></tr>
+          <tr><th>Journal</th><td><%= dbStats.journalMode %></td></tr>
+          <tr><th>Số bảng</th><td><%= dbStats.tableCount %></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <details class="details">
+      <summary>Xem danh sách bảng (<%= dbStats.tables.length %>)</summary>
+      <ul class="tag-list">
+        <% dbStats.tables.forEach(function (t) { %>
+          <li class="tag"><%= t %></li>
+        <% }); %>
+      </ul>
+    </details>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel__title">🧭 Lộ trình tiếp theo</h2>
+    <ol class="roadmap">
+      <li class="roadmap__item roadmap__item--done">
+        <span class="roadmap__badge">1</span>
+        <div>
+          <strong>Nền tảng</strong>
+          <p>Cấu trúc, DB, config, Express — <em>hoàn tất</em></p>
+        </div>
+      </li>
+      <li class="roadmap__item">
+        <span class="roadmap__badge">2</span>
+        <div>
+          <strong>Giao diện &amp; Motion</strong>
+          <p>Partials, CSS chia module, View Transitions, scroll reveal 60fps</p>
+        </div>
+      </li>
+      <li class="roadmap__item">
+        <span class="roadmap__badge">3</span>
+        <div>
+          <strong>Routes &amp; Views</strong>
+          <p>Auth/Admin → Posts → Profile/Shop → Chat/Messages/Presence → Study/Conduct/Media</p>
+        </div>
+      </li>
+      <li class="roadmap__item">
+        <span class="roadmap__badge">4</span>
+        <div>
+          <strong>Bot Discord &amp; Test</strong>
+          <p>Slash command, quản lý voice, unit test</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="panel panel--muted">
+    <h2 class="panel__title">⚙️ Cấu hình hiện tại</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <tbody>
+          <tr><th>Môi trường</th><td><%= env.NODE_ENV %></td></tr>
+          <tr><th>Node</th><td><%= process.version %></td></tr>
+          <tr><th>Bcrypt rounds</th><td><%= env.BCRYPT_ROUNDS %></td></tr>
+          <tr><th>Session TTL</th><td><%= env.SESSION_MAX_AGE_HOURS %> giờ</td></tr>
+          <tr><th>CSRF</th><td><%= env.CSRF_ENABLED ? 'Bật' : 'Tắt' %></td></tr>
+          <tr><th>Rate limit</th><td><%= env.RATE_LIMIT_MAX %> req / <%= env.RATE_LIMIT_WINDOW_MINUTES %> phút</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

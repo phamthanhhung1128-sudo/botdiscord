@@ -1,0 +1,49 @@
+{
+  "name": "ladudu-community",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Nền tảng web cộng đồng tích hợp Bot Discord — Node.js + Express + EJS + SQL + Discord.js",
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "keywords": [
+    "express",
+    "ejs",
+    "sqlite",
+    "discord.js",
+    "community",
+    "open-source",
+    "vietnam"
+  ],
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --watch src --watch bot --ext js,ejs,css src/server.js",
+    "start:all": "node start-all.js",
+    "db:init": "node src/db/initDb.js",
+    "db:reset": "node src/db/initDb.js --reset",
+    "db:migrate": "node src/db/migrate.js",
+    "db:seed": "node src/db/seed.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.5",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "helmet": "^8.0.0",
+    "method-override": "^3.0.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.8"
+  }
+}

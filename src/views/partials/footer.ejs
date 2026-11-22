@@ -1,0 +1,43 @@
+<%#
+  partials/footer.ejs — Chân trang + đóng thẻ
+  ---------------------------------------------------------------------------
+  Script luôn dùng `defer` để không chặn render (giữ 60fps khi tải trang).
+-%>
+<footer class="site-footer">
+  <div class="shell site-footer__grid">
+    <div class="site-footer__brand">
+      <a class="brand" href="/">
+        <span class="brand__mark" aria-hidden="true">🍃</span>
+        <span class="brand__text"><strong>Lá Đu Đủ</strong><small>Community</small></span>
+      </a>
+      <p class="muted">
+        Nền tảng cộng đồng & học tập tích hợp Bot Discord.
+        Mã nguồn mở, miễn phí, thân thiện với điện thoại.
+      </p>
+    </div>
+
+    <% footerGroups.forEach(function (group) { %>
+      <nav class="site-footer__col" aria-label="<%= group.title %>">
+        <h3><%= group.title %></h3>
+        <ul>
+          <% group.links.forEach(function (link) { %>
+            <li><a href="<%= link.href %>"><%= link.label %></a></li>
+          <% }); %>
+        </ul>
+      </nav>
+    <% }); %>
+  </div>
+
+  <div class="shell site-footer__bottom">
+    <p>© <%= year %> <%= app.name %> — v<%= app.version.version %> · Giấy phép MIT</p>
+    <p class="muted">Làm bằng 🍃 và ❤️ tại Việt Nam</p>
+  </div>
+</footer>
+
+<%# Script: defer + chỉ nạp những gì trang cần %>
+<script src="/js/phase1.js" defer></script>
+<% if (typeof pageJs !== 'undefined' && pageJs) { %>
+  <script src="/js/pages/<%= pageJs %>.js" defer></script>
+<% } %>
+</body>
+</html>

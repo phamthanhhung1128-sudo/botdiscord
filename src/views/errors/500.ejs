@@ -1,0 +1,21 @@
+<%- include('../partials/head', { title: 'Lỗi hệ thống' }) %>
+<%- include('../partials/navbar') %>
+
+<main id="main" class="shell page">
+  <section class="error-panel">
+    <p class="error-panel__code">500</p>
+    <h1>Đã có lỗi xảy ra</h1>
+    <p class="muted"><%= typeof message !== 'undefined' ? message : 'Máy chủ gặp sự cố. Chúng tôi đã ghi log và sẽ khắc phục sớm.' %></p>
+    <div class="error-panel__actions">
+      <a class="btn btn--primary" href="/">Về trang chủ</a>
+    </div>
+    <% if (typeof stack !== 'undefined' && stack) { %>
+      <details class="details details--danger">
+        <summary>Stack trace (chỉ hiện ở môi trường dev)</summary>
+        <pre class="code-block"><%= stack %></pre>
+      </details>
+    <% } %>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,50 @@
+<%#
+  pages/health.ejs — Trạng thái hệ thống (dạng HTML)
+-%>
+<%- include('../partials/head', { title: 'Trạng thái hệ thống' }) %>
+<%- include('../partials/navbar') %>
+
+<main id="main" class="shell page">
+  <%- include('../partials/flash') %>
+
+  <section class="hero-panel hero-panel--compact">
+    <p class="eyebrow">Health check</p>
+    <h1 class="hero-panel__title">
+      Trạng thái:
+      <span class="text-<%= report.ok ? 'ok' : 'danger' %>"><%= report.status %></span>
+    </h1>
+    <p class="hero-panel__lead">Cập nhật lúc <%= fmt.date(report.timestamp, true) %> · uptime <%= report.app.uptimeSeconds %>s</p>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel__title">Ứng dụng</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <tbody>
+          <tr><th>Tên</th><td><%= report.app.name %></td></tr>
+          <tr><th>Môi trường</th><td><%= report.app.env %></td></tr>
+          <tr><th>Node</th><td><%= report.app.node %></td></tr>
+          <tr><th>Bộ nhớ (RSS)</th><td><%= report.app.memoryMB %> MB</td></tr>
+          <tr><th>Uptime</th><td><%= report.app.uptimeSeconds %> giây</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel__title">Database</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <tbody>
+          <tr><th>Engine</th><td><%= report.database.engine %></td></tr>
+          <tr><th>Journal</th><td><%= report.database.journalMode || '—' %></td></tr>
+          <tr><th>Bảng</th><td><%= report.database.tables ?? '—' %></td></tr>
+          <tr><th>Kích thước</th><td><%= report.database.sizeKB ?? '—' %> KB</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted"><a href="/health">Xem JSON →</a></p>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
