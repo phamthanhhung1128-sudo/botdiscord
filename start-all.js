@@ -6,8 +6,7 @@
  *
  *   npm run start:all
  *
- * Bot Discord được bật ở Giai đoạn 4. Script này đã sẵn sàng: chỉ cần có
- * bot/index.js và DISCORD_TOKEN trong .env là bot tự chạy cùng web.
+ * Bot Discord tự chạy cùng web khi có DISCORD_TOKEN trong .env.
  */
 'use strict';
 
