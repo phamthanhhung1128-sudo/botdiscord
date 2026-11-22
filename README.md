@@ -36,7 +36,7 @@ cả điện thoại và máy tính, hiệu ứng mượt 60fps.
 | **Giao tiếp** | Phòng chat, tin nhắn riêng, theo dõi online (presence) | Giai đoạn 3 |
 | **Học tập** | Học liệu/video không quảng cáo, tính & theo dõi điểm rèn luyện | Giai đoạn 3 |
 | **Media** | Quản lý và phát liên kết media (YouTube, Vimeo...) | Giai đoạn 3 |
-| **Bot Discord** | `/avatar`, `/canhbao`, `/clear`, `/play` (voice), `/profile` | Giai đoạn 4 |
+| **Bot Discord** | `/clear`, `/avatar`, `/profile`, `/kick`, `/afk`, `/help`, `/warn` | ✅ Cơ bản |
 | **Hiệu ứng** | Chuyển trang mượt, micro-interaction, scroll reveal 60fps | Giai đoạn 2 |
 | **Nền tảng** | Express + EJS, SQL + migration, session, CSP, CSRF, rate limit | ✅ **Xong** |
 
@@ -114,7 +114,7 @@ Tài khoản admin mặc định (từ `.env`):
 | --- | --- |
 | `npm start` | Chạy web server |
 | `npm run dev` | Chạy kèm nodemon, tự restart khi sửa file |
-| `npm run start:all` | Chạy **cả web + bot Discord** (bot bật từ Giai đoạn 4) |
+| `npm run start:all` | Chạy **cả web + bot Discord** khi có token |
 | `npm run db:init` | Tạo database và chạy migration còn thiếu |
 | `npm run db:reset` | **Xoá** database rồi tạo lại (chỉ dùng ở máy dev) |
 | `npm run db:migrate` | Chạy migration còn thiếu |
@@ -167,7 +167,7 @@ botdiscord/
 │       ├── pages/              # home, health, posts, shop...
 │       └── errors/             # 403, 404, 429, 500
 ├── public/                     # Tài nguyên tĩnh (CSS/JS/img/fonts/uploads)
-├── bot/                        # Bot Discord (Giai đoạn 4)
+├── bot/                        # Bot Discord
 ├── tests/                      # Unit test (vitest)
 ├── docs/                       # Tài liệu kiến trúc
 ├── data/                       # Database (tự sinh, KHÔNG commit)
@@ -196,7 +196,7 @@ Toàn bộ biến được mô tả trong [`.env.example`](.env.example). Nhữn
 | `DATABASE_FILE` | `data/app.db` | Đường dẫn file SQLite (`:memory:` cho test) |
 | `BCRYPT_ROUNDS` | `12` | Số vòng hash mật khẩu |
 | `ADMIN_EMAIL` / `ADMIN_USERNAME` / `ADMIN_PASSWORD` | — | Tài khoản admin khi seed |
-| `DISCORD_TOKEN` | *(trống)* | Token bot (Giai đoạn 4) |
+| `DISCORD_TOKEN` | *(trống)* | Token bot |
 
 Tạo `SESSION_SECRET` an toàn:
 
@@ -295,7 +295,7 @@ Với **Nginx**, nhớ đặt `proxy_set_header X-Forwarded-Proto $scheme;` và
 | **1** | Kiến trúc, schema SQL, migration, cấu hình Express + Database | ✅ **Hoàn tất** |
 | **2** | Partials, CSS chia module, `motion.css`, `transitions.js`, Mobile/PC | ⏳ Tiếp theo |
 | **3** | Routes + Views: Auth/Admin → Posts → Profile/Shop → Chat/Messages/Presence → Study/Conduct/Media | ⏳ |
-| **4** | Bot Discord (5 slash command + voice) và bộ unit test đầy đủ | ⏳ |
+| **4** | Bot Discord: 7 slash command cơ bản; voice chưa triển khai | 🚧 |
 
 ---
 
@@ -318,3 +318,14 @@ tên biến/hàm tiếng Anh. Chỉ animate `transform` và `opacity`.
 
 > `legacy-static/` là bản website tĩnh đầu tiên của dự án, được giữ lại để tham khảo
 > ý tưởng thiết kế. Không nằm trong luồng chạy của ứng dụng.
+
+## 🤖 Bot Discord: lệnh quản trị và tiện ích
+
+Bot hỗ trợ các **slash command** trong máy chủ: `/clear soluong` (1–100 tin nhắn), `/avatar [thanhvien]`, `/profile [thanhvien]` (hồ sơ Discord, không phải tài khoản website), `/kick thanhvien [lydo]`, `/afk [lydo]`, `/help` và `/warn thanhvien lydo`. Cảnh báo được lưu trong SQLite theo từng máy chủ; lệnh này không tự động kick hoặc gửi DM. AFK được lưu qua lần khởi động lại, tự xóa khi người dùng gửi tin nhắn trong cùng máy chủ; bot thông báo khi người AFK được nhắc đến.
+
+1. Tạo ứng dụng/bot tại Discord Developer Portal, bật **Message Content Intent** trong mục Bot để tính năng AFK khi được nhắc hoạt động. Không cần Server Members Intent.
+2. Điền `DISCORD_TOKEN`, `DISCORD_CLIENT_ID` và tùy chọn `DISCORD_GUILD_ID` trong `.env`. Không chia sẻ token. Mời bot với scope `bot` và `applications.commands`, cấp quyền xem kênh/gửi tin nhắn, Manage Messages cho `/clear` và Kick Members cho `/kick`; vai trò bot phải cao hơn thành viên cần kick.
+3. Chạy `npm install`, sau đó `npm run deploy-commands`. Có `DISCORD_GUILD_ID` thì đăng ký riêng cho máy chủ (cập nhật nhanh); bỏ trống thì đăng ký toàn cục (có thể mất thời gian cập nhật). **Lưu ý:** thao tác đăng ký thay thế toàn bộ slash command của ứng dụng tại phạm vi tương ứng.
+4. Chạy `npm run bot` hoặc `npm run start:all` để chạy cùng website.
+
+`/clear` yêu cầu người dùng và bot có quyền Manage Messages, và chỉ xóa hàng loạt được tin nhắn chưa quá 14 ngày. `/kick` yêu cầu Kick Members, `/warn` yêu cầu Moderate Members; cả hai kiểm tra thứ bậc vai trò và không áp dụng cho chủ máy chủ, chính người dùng hoặc bot. Bot tạo các bảng cần thiết nếu chưa có; hãy sao lưu SQLite trước khi nâng cấp hệ thống đang chạy.
