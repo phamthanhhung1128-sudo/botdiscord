@@ -1,0 +1,11 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.db
+*.db-wal
+*.db-shm
+static/uploads/*
+!static/uploads/.gitkeep
+outputs/*
+!outputs/.gitkeep

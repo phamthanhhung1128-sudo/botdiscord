@@ -28,6 +28,8 @@ cả điện thoại và máy tính, hiệu ứng mượt 60fps.
 
 ## ✨ Tính năng
 
+> Muốn chạy công cụ tạo PowerPoint AI riêng biệt? Xem [AutoSlide AI](autoslide-ai/README.md) — ứng dụng Flask độc lập nằm trong thư mục `autoslide-ai/`.
+
 | Nhóm | Chức năng | Trạng thái |
 | --- | --- | --- |
 | **Tài khoản** | Đăng ký, đăng nhập, phân quyền Admin/Moderator, thăng cấp admin | Giai đoạn 3 |
